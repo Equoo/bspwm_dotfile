@@ -37,11 +37,6 @@ unset GNOME_DESKTOP_SESSION_ID GNOME_SHELL_SESSION_MODE \
       GDMSESSION SESSION_MANAGER \
       XDG_DATA_DIRS XDG_CONFIG_DIRS
 
-
-# Remove outer junest wrapper paths from PATH — inside junest they shadow real sudo/pacman
-PATH=$(echo "$PATH" | tr ':' '\n' | grep -vF "$HOME/.junest/usr/bin_wrappers" | tr '\n' ':' | sed 's/:$//')
-export PATH
-
 # Kill gnome
 MONITOR_PID=$(pgrep -f "gnome-session-ctl --monitor")
 BINARY_PIDS=$(pgrep -f "gnome-session-binary")
