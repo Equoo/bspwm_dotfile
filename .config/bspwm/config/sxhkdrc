@@ -18,11 +18,11 @@ alt + F1
 
 # Open Terminal (Normal & Floating)
 super + {_,alt + }Return
-    OpenApps --{terminal,floating}
+    funest OpenApps --{terminal,floating}
 
 # App launcher
 super + @space
-    OpenApps --menu
+    funest OpenApps --menu
 
 # Theme Selector
 alt + @space
@@ -32,23 +32,19 @@ alt + @space
 
 # Brave
 super + w
-	brave
+	funest brave-browser
 
 # Thunar (FileManager)
 super + e
-	thunar .
-
-# Code (editor)
-super + c
-	code .
+	funest thunar .
 
 # Apps (browser, editor, filemanager)
 # super + {b,e,f}
     # OpenApps --{browser,editor,filemanager}
 
 # Terminal apps (yazi, nvim, ncmpcpp)
-super + {y,v,m}
-    OpenApps --{yazi,nvim,music}
+super + {y,c,m}
+    funest OpenApps --{yazi,nvim,spotify}
 
 # Media apps (Pavucontrol, Telegram)
 super + {p,t}
@@ -101,8 +97,8 @@ super + alt + k
     OpenApps --keyboard
 
 # RofiPass applet
-super + alt + x
-    OpenApps --pass
+# super + alt + x
+#     OpenApps --pass
 
 # ----- Environment Apps ----- #
 
@@ -119,8 +115,10 @@ super + shift + Return
                --config-file="$HOME/.config/bspwm/config/jgmenurc";; esac
 
 # Power off, Reboot, Log out, Lockscreen, kill an app
-ctrl + super + alt + {p,r,q,l,k,s}
-    {systemctl poweroff, systemctl reboot,quit.sh,Lock,xkill,SoftReload}
+# ctrl + super + alt + {p,r,q,l,k,s}
+#     {systemctl poweroff, systemctl reboot,quit.sh,Lock,xkill,SoftReload}
+ctrl + super + alt + {q,l,k,s}
+    {quit.sh,Lock,xkill,SoftReload}
 
 # Lock
 super + l
@@ -135,7 +133,7 @@ super + {minus,equal}
     picom-trans {-c -3,-c +3}
 
 # Manage brightness
-XF86MonBrightness{Up,Down}
+alt + {F8,F7}
     sh Brightness {up,down}
 
 # Volume control
@@ -145,10 +143,6 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 # Music Control
 XF86Audio{Next,Prev,Play,Stop}
     MediaControl {--next,--previous,--toggle,--stop}
-
-# Bluetooth mic toggle (A2DP hi-fi ↔ HFP mic enabled)
-super + shift + F9
-    BtMicToggle
 
 #####################
 # ----- Bspwm ----- #
@@ -192,11 +186,11 @@ super + Tab
 
 # Switch workspace
 ctrl + super + {Left,Right}
-    SwitchDesktop {prev,next}
+    bspc desktop -f {prev,next}
 
 # Focus or send to the given desktop
 super + {_,ctrl + }{1-9,0}
-    {SwitchDesktop,bspc node -d} '^{1-9,10}'
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Send focused Node to workspace directionally
 super + ctrl + shift + {Left,Right}
@@ -276,14 +270,10 @@ super + n ; {1-9}
 super + b
     quit.sh
 
-# Wallpaper selector (AnimWallSelect if ENGINE=Animated, else WallSelect)
+# Animated wallpaper selector
 super + shift + w
-    SmartWallSelect
+    AnimWallSelect
 
 # Cycle animated wallpaper
 super + ctrl + w
     CycleAnimWall
-
-# Cycle wallpaper engine (Random → Animated → Slideshow)
-super + shift + e
-    CycleWallEngine
