@@ -20,7 +20,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 ### Fix for gnome theme
 export GTK_THEME=Adwaita:dark
-export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:"/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
 #  ╦ ╦╔═╗╦═╗╦╔═╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗
 #  ║║║║ ║╠╦╝╠╩╗╚═╗╠═╝╠═╣║  ║╣ ╚═╗
